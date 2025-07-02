@@ -176,6 +176,7 @@ class ABC(Propagator):
 
         child = Individual(position=candidate_pos, limits=self.limits, rank=parent.rank)
         child.generation = self.generation
+        child.tolerance = self.tol
 
         pdfs = []
         for wp in working_pop:

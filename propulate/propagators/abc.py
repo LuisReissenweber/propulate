@@ -143,7 +143,7 @@ class ABC(Propagator):
             sample = {}
             for key, limit in self.limits.items():
                 sample[key] = np.random.uniform(limit[0], limit[1])
-            child = Individual(position=sample, limits=self.limits, generation=self.generation + 1)
+            child = Individual(position=sample, limits=self.limits)
             child.weight = 1.0
             return child
 

@@ -56,7 +56,6 @@ class ABC(Propagator):
         self.perturbation_scale = perturbation_scale
         self.k = k
         self.tol = tol
-        self.generation = 0
         if additional_needed_inds is None:
             self.additional_needed_inds = k
         else:
@@ -174,8 +173,7 @@ class ABC(Propagator):
 
         candidate_pos = parent.position + np.random.multivariate_normal(mean=np.zeros(positions.shape[1]), cov=kernel_cov)
 
-        child = Individual(position=candidate_pos, limits=self.limits, rank=parent.rank)
-        child.generation = self.generation
+        child = Individual(position=candidate_pos, limits=self.limits)
         child.tolerance = self.tol
 
         pdfs = []
@@ -199,7 +197,6 @@ class ABC(Propagator):
             denom = 1e-12
         child.weight = self.prior_density / denom
 
-        self.generation += 1
         return child
 
 
